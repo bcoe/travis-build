@@ -31,7 +31,7 @@ describe Travis::Build::Script::Python, :sexp do
   it 'sets up the python version (pypy-5.3.1)' do
     data[:config][:python] = 'pypy-5.3.1'
     should include_sexp [:cmd,  'source ~/virtualenv/pypy-5.3.1/bin/activate', assert: true, echo: true, timing: true]
-    should include_sexp [:cmd,  "curl -s -o pypy-5.3.1.tar.bz2 ${archive_url}", assert: true, echo: true]
+    should include_sexp [:cmd,  "curl -s -o pypy-5.3.1.tar.bz2 ${archive_url}", assert: true]
   end
 
   it 'sets up the python version (pypy3)' do
