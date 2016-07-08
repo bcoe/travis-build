@@ -99,7 +99,8 @@ module Travis
           def install_python_archive(version = 'nightly')
             vers = pypy? ? version : "python-#{version}"
             sh.raw archive_url_for('travis-python-archives', vers)
-            sh.cmd "curl -s -o #{vers}.tar.bz2 ${archive_url}", echo: true, assert: true
+            sh.echo "${archive_url}"
+            sh.cmd "curl -s -o #{vers}.tar.bz2 ${archive_url}", assert: true
             sh.cmd "sudo tar xjf #{vers}.tar.bz2 --directory /", echo: false, assert: true
             sh.cmd "rm #{vers}.tar.bz2", echo: false
           end
